@@ -1,12 +1,12 @@
 {
-  "metadata" : {
+"metadata" : {
     "browser_name" : "aura",
     "browser_version" : "26.0",
     "data_type" : "extension",
     "export_time_usec" : 1766273000482934,
     "schema_version" : 1.5
   },
-  "history" : [
+  "data" : [
     {
       "url" : "https://github.com/Web4application/Aura",
       "time_usec" : 1763761116069570,
