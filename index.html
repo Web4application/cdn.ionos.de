@@ -2,336 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
----
-tittle: 
-## @meta, ## @page
-  project: Paperweb
-  repo: https://github.com/Web4application/Paperweb
-  version: 1.0
-  author: Seriki Yakub (Kubu Lee)
-  encoding: UTF-8
-  type: khml-paperweb
-  converted: true
-  date: 2025-12-02
----
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Qubuhub – React + Web4 infrastructure" />
+
+  <!-- Core Metadata -->
+  <title>Paperweb · Web4 Documentation Engine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paperweb — Computable documentation and KHML engine for Web4 systems." />
+  <meta name="author" content="Seriki Yakub (Kubu Lee)" />
+
+  <!-- Paperweb Machine Metadata -->
+  <meta name="paperweb:project" content="Paperweb" />
+  <meta name="paperweb:version" content="1.0" />
+  <meta name="paperweb:type" content="khml-render-ui" />
+  <meta name="paperweb:repo" content="https://github.com/Web4application/Paperweb" />
+
+  <!-- Favicon -->
   <link rel="icon" href="./web4.png" />
+
+  <!-- Styles -->
   <style>
+    :root {
+      --bg-main: #0f0f1a;
+      --bg-panel: #1a1a2e;
+      --bg-hover: #272746;
+      --accent: #00ffff;
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0a0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #0f0f1a;
-      color: #e0e0e0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
     }
+
     header {
+      padding: 72px 24px;
       text-align: center;
-      padding: 60px 20px;
       background: linear-gradient(90deg, #0f0f1a, #1a1a2e);
     }
+
     header h1 {
+      margin: 0 0 12px;
       font-size: 3rem;
-      color: #00ffff;
-      margin-bottom: 10px;
+      color: var(--accent);
+      letter-spacing: 0.5px;
     }
+
     header p {
-      font-size: 1.2rem;
-      color: #a0a0a0;
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--text-muted);
     }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
     section {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
+      margin-bottom: 56px;
     }
+
     section h2 {
-      color: #00ffff;
       text-align: center;
-      margin-bottom: 20px;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-size: 1.9rem;
     }
-    section ul {
+
+    section p {
+      line-height: 1.7;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 24px;
+      color: var(--text-muted);
+    }
+
+    ul.feature-list {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
-    section ul li {
-      background: #1a1a2e;
-      margin: 10px 0;
-      padding: 15px 20px;
-      border-left: 5px solid #00ffff;
-      transition: transform 0.3s, background 0.3s;
+
+    ul.feature-list li {
+      background: var(--bg-panel);
+      padding: 16px 20px;
+      margin: 12px 0;
+      border-left: 4px solid var(--accent);
+      transition: transform 0.25s ease, background 0.25s ease;
     }
-    section ul li:hover {
-      background: #272746;
-      transform: translateX(5px);
+
+    ul.feature-list li:hover {
+      background: var(--bg-hover);
+      transform: translateX(6px);
     }
+
     footer {
       text-align: center;
-      padding: 30px 20px;
-      background: #1a1a2e;
+      padding: 32px 20px;
+      background: var(--bg-panel);
       color: #888;
+      font-size: 0.95rem;
     }
+
     a {
-      color: #00ffff;
+      color: var(--accent);
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s forwards;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
   </style>
 </head>
-<body>
 
+<body>
   <div id="root"></div>
 
-  <!-- React CDN -->
+  <!-- React (CDN) -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
+  <!-- Application -->
   <script>
     const e = React.createElement;
 
     const sections = [
       {
-        title: "What is Web4?",
-        content: "Web4 is the next evolutionary stage of the internet beyond Web3. While Web3 focuses on decentralization, blockchain, and user ownership, Web4 is all about hyper-connected intelligence, seamless integration of AI, IoT, and immersive experiences, and human-centered digital ecosystems. Think of it as the internet becoming smart, adaptive, and deeply personal."
+        title: "What is Paperweb?",
+        content:
+          "Paperweb is a Web4-native documentation and computation engine built on KHML (Knowledge Hyper Markup Language). It transforms repositories, documents, and data into structured, executable knowledge papers."
       },
       {
-        title: "Key Principles of Web4",
+        title: "Core Principles",
         list: [
-          "Intelligent Web: AI and machine learning are embedded natively into the web, enabling smart recommendations, automation, and predictive services.",
-          "Decentralization Evolved: Beyond blockchain: distributed computing, peer-to-peer networks, and decentralized AI systems reduce reliance on centralized servers.",
-          "Immersive & Multi-Sensory: Full integration with AR/VR/MR for mixed reality experiences. Users can interact with digital content as if it’s part of the physical world.",
-          "Interoperability & Universal Access: Apps and data seamlessly work across devices, platforms, and ecosystems. Data portability is standard: your digital identity, assets, and preferences move with you securely.",
-          "Human-Centric Design: Privacy, ethics, and sustainability are baked in. AI respects consent, transparency, and fairness.",
-          "Hyper-Personalization: Web4 understands context, emotion, and environment. Personalized experiences, recommendations, and interfaces are dynamic and real-time.",
-          "Edge & IoT Integration: Internet of Things + Edge Computing = real-time, local intelligence. Your devices communicate and make decisions without always needing a central server."
+          "KHML-first: Documentation as a programmable, page-based DSL",
+          "Separation of concerns: UI, compiler, and engine layers are independent",
+          "Engine namespaces (.xlsl): mathematics, code analysis, and data execution",
+          "Repository condensation: code, config, and docs unified into one paper",
+          "Multi-target rendering: HTML, PDF, Markdown, MDX, JSON AST"
         ]
       },
       {
-        title: "Why Web4 Matters",
+        title: "Why Paperweb Matters",
         list: [
-          "Smarter Interactions: Every app, website, or device anticipates your needs.",
-          "True Digital Ownership: Your data, identity, and digital assets belong to you, not just corporations.",
-          "Immersive Experiences: Education, shopping, socializing—all in mixed reality, AI-powered.",
-          "Seamless Ecosystem: Everything is connected; friction is minimized."
+          "Documentation becomes verifiable and computable",
+          "Repositories become readable knowledge artifacts",
+          "AI systems gain structured, executable context",
+          "Web4 systems demand more than static Markdown"
         ]
       }
     ];
 
-    const App = () => {
-      return e('div', null,
-        // Header
-        e('header', null,
-          e('h1', null, '🌍 Welcome to Qubuhub'),
-          e('p', null, 'Decentralized AI + React UI via .min.js')
+    function App() {
+      return e(
+        React.Fragment,
+        null,
+        e(
+          "header",
+          null,
+          e("h1", null, "Paperweb"),
+          e("p", null, "Computable documentation for Web4 systems")
         ),
-        // Sections
-        ...sections.map((sec, idx) => 
-          e('section', { key: idx, className: 'fade-in', style: { animationDelay: `${idx * 0.3}s` } },
-            e('h2', null, sec.title),
-            sec.content ? e('p', null, sec.content) : null,
-            sec.list ? e('ul', null, sec.list.map((item, i) => e('li', { key: i }, item))) : null
+        e(
+          "main",
+          null,
+          sections.map((section, index) =>
+            e(
+              "section",
+              { key: index },
+              e("h2", null, section.title),
+              section.content
+                ? e("p", null, section.content)
+                : null,
+              section.list
+                ? e(
+                    "ul",
+                    { className: "feature-list" },
+                    section.list.map((item, i) =>
+                      e("li", { key: i }, item)
+                    )
+                  )
+                : null
+            )
           )
         ),
-        // Footer
-        e('footer', null,
-          e('p', null,
-            "Learn more about the ", 
-            e('a', { href: 'https://www.web4.org/en-US/about/manifesto/' }, 'Web4 Manifesto')
+        e(
+          "footer",
+          null,
+          e(
+            "p",
+            null,
+            "Project Repository: ",
+            e(
+              "a",
+              { href: "https://github.com/Web4application/Paperweb" },
+              "github.com/Web4application/Paperweb"
+            )
           )
         )
       );
-    };
+    }
 
-    ReactDOM.createRoot(document.getElementById('root')).render(e(App));
+    ReactDOM.createRoot(document.getElementById("root")).render(e(App));
   </script>
 </body>
 </html>
-
-<div>
-  <span>Three words</span>
-  <div>
-    <a>one word</a>
-    <a>one word</a>
-    <a>one word</a>
-    <a>one word</a>
-  </div>
-</div>
-<div>
-  <div>
-    <div>five words</div>
-  </div>
-  <div>
-    <div>three words</div>
-    <div>forty-six words</div>
-    <div>forty-four words</div>
-  </div>
-  <div>
-    <div>seven words</div>
-    <div>sixty-eight words</div>
-    <div>forty-four words</div>
-  </div>
-</div>
-<div>
-   <span>five words</span>
-</div>
-<p>
-@page repo-summary
- 
-<h>Paperweb Repository (KHML Conversion)</h>
-
-This document is the full KHML condensation of **Web4application/Paperweb**.
-
-  It includes:
-- directory tree
-- extracted file contents
-- configuration files
-- documentation
-- engine integrations (.xlsl)
-- architecture overview
-- namespace metadata
-@end
-
-
-@page directory-tree
-## Repository Structure
-
-@block tree
-<paperweb>/
-  ├── docs/
-  ├── scripts/
-  ├── src/
-  ├── examples/
-  ├── config/
-  ├── README.md
-  ├── LICENSE
-  ├── paperweb.kconfig
-  └── ...
-@end
-@end
-
-
-@page readme
-## README.md
-
-@block text
-{{REPO.README}}
-@end
-@end
-
-
-@page license
-## LICENSE
-
-@block text
-{{REPO.LICENSE}}
-@end
-@end
-
-
-@page code-files
-## Source Code Extracts
-
-### /src/main.py
-@block code python
-{{REPO.SRC.MAIN}}
-@end
-
-### /src/utils.py
-@block code python
-{{REPO.SRC.UTILS}}
-@end
-
-### /scripts/build.sh
-@block code sh
-{{REPO.SCRIPTS.BUILD}}
-@end
-@end
-
-
-@page configs
-## Configuration Files
-
-### paperweb.kconfig
-@block code khml
-{{REPO.CONFIG.PAPERWEB}}
-@end
-
-### .gitignore
-@block code text
-{{REPO.GITIGNORE}}
-@end
-@end
-
-
-@page docs
-## Documentation Files
-
-All extra documentation files are placed under this section.
-
-Example:
-
-@page docs-installation
-### Installation Guide
-
-@block text
-{{REPO.DOCS.INSTALL}}
-@end
-@end
-@end
-
-
-@page engine
-## .xlsl Engine Integrations
-
-@block engine
-#import xlmath
-#import xlcode
-#import xldata
-@end
-
-### Example Engine Blocks
-
-@block xlmath
-integrate(sin(x), x)
-@end
-
-@block xlcode
-analyze("src/main.py")
-@end
-
-@block xldata
-read("dataset/users.csv")
-@end
-@end
-
-
-@page architecture
-## Project Architecture
-
-### Core Modules
-- KHML parser
-- Renderer
-- File abstraction layer
-- Block processor
-- Engine interface
-
-### Data Flow
-@block flow
-Raw files → KHML Blocks → Paperweb Engine → Output
-@end
-
-### Purpose
-Paperweb = documentation + computation + DSL fusion.
-@end
-</paperweb>
