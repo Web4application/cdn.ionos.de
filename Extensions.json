@@ -1,0 +1,19 @@
+{
+  "metadata" : {
+    "browser_name" : "Safari",
+    "browser_version" : "26.0",
+    "data_type" : "extensions",
+    "export_time_usec" : 1766272999317621,
+    "schema_version" : 1
+  },
+  "extensions" : [
+    {
+      "composed_identifier" : "com.openai.chat.SearchSafariExtension (2DC432GLL2)",
+      "developer_name" : "OpenAI",
+      "display_name" : "ChatGPT search",
+      "marketplace_lookup" : {
+        "store_identifier" : "6448311069"
+      }
+    }
+  ]
+}
